@@ -1,1 +1,1 @@
-A WIP library for reading and writing binary files. 
+A library for reading and writing data input streams (similar to Java's DataInputStream and DataOutputStream).  Based on dart_io but with (1) Fix end-of-steam bug in readBytes(); (2) readLong() and writeLong() use ints, not arrays
