@@ -54,11 +54,12 @@ class DataOutput {
     _view.setInt32(0, v, endian);
     write(_buffer.getRange(0, 4).toList());
   }
-  void writeLong(List<int> v) {
-    // TODO: Check if this messes up in dart2js
-    write(v);
+
+  void writeLong(int v, [Endianness endian = Endianness.BIG_ENDIAN]) {
+    _view.setInt64(0, v, endian);
+    write(_buffer.getRange(0, 8).toList());
   }
-  
+ 
   void writeUTF(String s, [Endianness endian = Endianness.BIG_ENDIAN]) {    
     if (s == null) throw new ArgumentError("String cannot be null");
     List<int> bytesNeeded = UTF8.encode(s);

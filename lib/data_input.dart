@@ -82,8 +82,10 @@ class DataInput {
     return view.getInt32(old_offset, endian);
   }
 
-  List<int> readLong() {
-      return readBytes(8);
+  int readLong([Endianness endian = Endianness.BIG_ENDIAN]) {
+    var old_offset = _offset;
+    _offset += 8;
+     return view.getInt64(old_offset, endian);
   }
   
   double readFloat([Endianness endian = Endianness.BIG_ENDIAN]) {
