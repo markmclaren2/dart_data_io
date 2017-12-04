@@ -1,8 +1,9 @@
-name: dart_io
-version: 0.0.5
-author: Thomas Caserta <tom@caserta.co.uk>
+name: dart_data_io
+version: 0.0.1
+author: Mark McLaren <mark.k.mclaren@gmail.com>
 description: Java-like io library
-homepage: https://github.com/TomCaserta/dart_io
+homepage: https://github.com/markmclaren2/dart_data_io
 dependencies:
   archive: any
   fixnum: any
+
