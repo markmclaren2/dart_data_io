@@ -1,9 +1,11 @@
 name: dart_data_io
-version: 0.0.1
+version: 0.0.2
 author: Mark McLaren <mark.k.mclaren@gmail.com>
 description: Java-like io library
 homepage: https://github.com/markmclaren2/dart_data_io
 dependencies:
   archive: any
   fixnum: any
+environment:
+  sdk: '>=2.0.0'
 

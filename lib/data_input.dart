@@ -63,32 +63,32 @@ class DataInput {
     else return -129;
   }
   
-  int readShort([Endianness endian = Endianness.BIG_ENDIAN]) {
+  int readShort([Endian endian = Endian.big]) {
     var old_offset = _offset;
     _offset += 2;
     return view.getInt16(old_offset, endian);
   }
   
-  int readUnsignedShort([Endianness endian = Endianness.BIG_ENDIAN]) {
+  int readUnsignedShort([Endian endian = Endian.big]) {
     var old_offset = _offset;
     _offset += 2;
     return view.getUint16(old_offset, endian);
   }
   
 
-  int readInt([Endianness endian = Endianness.BIG_ENDIAN]) {
+  int readInt([Endian endian = Endian.big]) {
     var old_offset = _offset;
     _offset += 4;
     return view.getInt32(old_offset, endian);
   }
 
-  int readLong([Endianness endian = Endianness.BIG_ENDIAN]) {
+  int readLong([Endian endian = Endian.big]) {
     var old_offset = _offset;
     _offset += 8;
      return view.getInt64(old_offset, endian);
   }
   
-  double readFloat([Endianness endian = Endianness.BIG_ENDIAN]) {
+  double readFloat([Endian endian = Endian.big]) {
     var old_offset = _offset;
     _offset += 4;
     return view.getFloat32(old_offset, endian);
@@ -96,14 +96,14 @@ class DataInput {
   }
   
 
-  double readDouble([Endianness endian = Endianness.BIG_ENDIAN]) {
+  double readDouble([Endian endian = Endian.big]) {
     var old_offset = _offset;
     _offset += 8;
     return view.getFloat64(old_offset, endian);
   }
   
 
-  String readLine([Endianness endian = Endianness.BIG_ENDIAN]) {
+  String readLine([Endian endian = Endian.big]) {
     var byte = readUnsignedByte(false);
     if (byte == -1) return null;
 
@@ -119,7 +119,7 @@ class DataInput {
   }
   
   
-  String readChar([Endianness endian = Endianness.BIG_ENDIAN]) {
+  String readChar([Endian endian = Endian.big]) {
     return new String.fromCharCode(readShort(endian));
   }
    
@@ -127,7 +127,7 @@ class DataInput {
     return readByte() != 0;
   }
   
-  void readFully(List bytes,{ int len, int off, Endianness endian: Endianness.BIG_ENDIAN }) {
+  void readFully(List bytes,{ int len, int off, Endian endian = Endian.big}) {
     if (len != null || off != null) {
       if ((len != null && off == null) || (len == null && off != null)) throw new ArgumentError("You must supply both [len] and [off] values.");
       if (len < 0 || off < 0) throw new RangeError("$off - $len is out of bounds");
@@ -142,10 +142,10 @@ class DataInput {
     }
   }
  
-  String readUTF([Endianness endian = Endianness.BIG_ENDIAN]) {
+  String readUTF([Endian endian = Endian.big]) {
       int length = readShort(endian);
       List<int> bytes = readBytes(length);
-      return UTF8.decode(bytes);
+      return utf8.decode(bytes);
   }
   
   int skipBytes(int n) {
